@@ -1,46 +1,27 @@
 // import express
 const express = require('express');
 const router = express.Router();
-//we go and get the posts from /posts.js and import it here in /routes/postsRoute.js
-//importing array of posts
-  const data = require("../data/posts.js");
+//we import the destructured controller 
+const {index , show , create , modify , update , destroy} = require('../controllers/postsController.js')
 // define all routes
 //index for posts
 
-router.get('/',(req,res)=>{
-  //here we show all posts
-  res.send(data);
-})
+router.get('/',index);
 
 // show id 
-router.get('/:id',(req,res)=>{
-  // res.send(`post id ${req.params.id}`);
-  console.log(`we are showing post id:${req.params.id}`) //debug
-  //define variable post in wich we will put our filter result
-  const post = data.filter(obj => obj.id===parseInt(req.params.id))
-  res.send(post)
-})
+router.get('/:id',show)
 
 // insert new  id 
-router.post('/',(req,res)=>{
-  res.send(`create new post`);
- 
-})
+router.post('/',create)
 
 // update post  id 
-router.put('/:id',(req,res)=>{
-  res.send(`update post ${req.params.id}`);
-})
+router.put('/:id',modify)
 
 // modify post  id 
-router.patch('/:id',(req,res)=>{
-  res.send(`modify post ${req.params.id}`);
-})
+router.patch('/:id',update)
 
 // delete post  id 
-router.delete('/:id',(req,res)=>{
-  res.send(`delete post ${req.params.id}`);
-})
+router.delete('/:id',delete)
 
 
 module.exports=router;
