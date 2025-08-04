@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 //we go and get the posts from /posts.js and import it here in /routes/postsRoute.js
 //importing array of posts
-  const data = require("../posts.js");
+  const data = require("../data/posts.js");
 // define all routes
 //index for posts
 
