@@ -3,8 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 
-//lets enable static  assets
-app.use(express.static('public/'));
+
 
 
 //we import the destructured controller 
@@ -21,10 +20,10 @@ router.get('/:id',show)
 router.post('/',create)
 
 // update post  id 
-router.put('/:id',modify)
+router.put('/:id',update)
 
 // modify post  id 
-router.patch('/:id',update)
+router.patch('/:id',modify)
 
 // delete post  id 
 router.delete('/:id',destroy)

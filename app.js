@@ -7,6 +7,10 @@ const app = express();
 //setting up port
 const port = 3000;
 
+//lets enable static  assets
+app.use(express.static('public'));
+//lets enable static  assets
+app.use(express.static('public/'));
 
 //creating the endpoint
 
@@ -29,6 +33,7 @@ app.get('/',(req,res)=>{
 const postsRoute = require('./routes/postsRouter.js');
 
 app.use('/posts', postsRoute);
+
 
 app.listen(port,()=>{
   console.log(`blog is  listening on port ${port}`);
