@@ -6,8 +6,7 @@ const express = require("express");
 const app = express();
 //setting up port
 const port = 3000;
-//lets enable static  assets
-app.use(express.static('public'));
+
 
 //creating the endpoint
 

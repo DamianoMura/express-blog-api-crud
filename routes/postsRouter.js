@@ -1,6 +1,12 @@
 // import express
 const express = require('express');
 const router = express.Router();
+
+
+//lets enable static  assets
+app.use(express.static('public/'));
+
+
 //we import the destructured controller 
 const {index , show , create , modify , update , destroy} = require('../controllers/postsController.js')
 // define all routes
@@ -21,7 +27,7 @@ router.put('/:id',modify)
 router.patch('/:id',update)
 
 // delete post  id 
-router.delete('/:id',delete)
+router.delete('/:id',destroy)
 
 
 module.exports=router;
