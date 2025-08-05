@@ -58,12 +58,40 @@
 
 
   function modify  (req,res){
-  res.send(`update post ${req.params.id}`);
+  // res.send(`update post ${req.params.id}`);
+ 
 }
 
 
   function update (req,res){
-  res.send(`modify post ${req.params.id}`);
+  // res.send(`modify post ${req.params.id}`);
+  //we define a variable to have a int value as id taken from the URI
+  const id = parseInt(req.params.id);
+  //we go and check if the id is existent
+  const post = data.find(post => post.id === id)
+  //defining what to do if the post is not existent
+  if(!post){
+    //we set the status to 404
+    res.status(404);
+    //we return a json giving the error message
+    return res.json(
+      {
+        status:404,
+        error:"not found",
+        message:"cannot update inexistent post"
+      }
+    )
+  }
+  //we here define the parameters of the new post taking the req.body parameters we passed 
+  post.title=req.body.title;
+  
+  post.content=req.body.content;
+  
+  post.image=req.body.image;
+  
+  post.tags=req.body.tags
+  //we show the new post
+  res.json(post)
 }
 
 
