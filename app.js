@@ -11,7 +11,8 @@ const port = 3000;
 app.use(express.static('public'));
 //lets enable static  assets
 app.use(express.static('public/'));
-
+//enable json decoding for req.body (body parser)
+app.use(express.json());
 //creating the endpoint
 
 app.get('/',(req,res)=>{
