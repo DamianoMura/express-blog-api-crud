@@ -6,10 +6,11 @@
   //here we show all posts
   //creating a new array
   let filteredArray=data;
-  if (req.query.tags){
-    const tag=req.query.tags.toLowerCase(); 
+  const tag=req.query.tags.toLowerCase();
+  if (tag){
     console.log(tag)
-    filteredArray= data.filter(post=> post.tags.includes(tag));
+    filteredArray= data.filter(post=>{
+      return post.tags.map(tag=> tag.toLowerCase()).includes(tag)});
   }
   
  
