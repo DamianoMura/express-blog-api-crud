@@ -6,10 +6,8 @@
   //here we show all posts
   //creating a new array
   let filteredArray=data;
-  // if (res.query.tags){
-    console.log(data)
-  // }
-  // res.send(data);
+ 
+  res.send(data);
   }
   function show  (req,res){
   // res.send(`post id ${req.params.id}`);
@@ -23,20 +21,44 @@
       message:'post not found'
     })
   }
-  res.send(post)
 }
+
+
   function create  (req,res){
   res.send(`create new post`);
  
 }
+
+
   function modify  (req,res){
   res.send(`update post ${req.params.id}`);
 }
+
+
   function update (req,res){
   res.send(`modify post ${req.params.id}`);
 }
+
+
   function destroy  (req,res){
-  res.send(`delete post ${req.params.id}`);
+  
+
+   const post = data.find(post => post.id=== parseInt(req.params.id));
+  //  console.log(post)
+  
+if(post === undefined){
+    res.status(404);
+    return res.json ({
+      status : 404,
+      error: 'not found',
+      message : 'post not found'
+    })
+  }
+
+  // console.log(data.indexOf(post))
+  data.splice(data.indexOf(post),1)
+  res.sendStatus(204);
+  console.log(data);
 }
 
 module.exports={
