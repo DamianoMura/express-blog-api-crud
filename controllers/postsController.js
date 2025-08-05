@@ -36,7 +36,23 @@
 
 
   function create  (req,res){
-  res.send(`create new post`);
+    //defining the new id for the new post
+  const newId = data[data.length -1].id+1;
+  // we destruct our req.body as follows
+    const { title , content , image , tags }= req.body;
+  //define the new post using the data from the destructuring  
+  const newPost={
+    id:newId,
+    title,
+    content,
+    image,
+    tags
+  }
+  //we insert it into the original data array
+  data.push(newPost)
+  // finally we can send it as a response json
+  res.json(data)
+   
  
 }
 
