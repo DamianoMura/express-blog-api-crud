@@ -59,7 +59,36 @@
 
   function modify  (req,res){
   // res.send(`update post ${req.params.id}`);
- 
+  //we use the same procedure for modify with controls to check what is been modified
+   const id = parseInt(req.params.id);
+  const post = data.find(post => post.id === id)
+  console.log(post)
+  if(!post){
+    res.status(404);
+    return res.json(
+      {
+        status:404,
+        error:"not found",
+        message:"cannot update inexistent post"
+      }
+    )
+  }
+  if(req.body.title){
+    post.title=req.body.title;
+  }
+  
+  if(req.body.content){
+    post.content=req.body.content;
+  }
+
+  if(req.body.image){
+    post.image=req.body.image;
+  }
+
+  if(req.body.tags){
+    post.tags=req.body.tags
+  }
+  res.json(post)
 }
 
 
