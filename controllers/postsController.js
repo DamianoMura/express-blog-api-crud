@@ -6,9 +6,17 @@
   //here we show all posts
   //creating a new array
   let filteredArray=data;
- 
-  res.send(data);
+  if (req.query.tags){
+    const tag=req.query.tags.toLowerCase(); 
+    console.log(tag)
+    filteredArray= data.filter(post=> post.tags.includes(tag));
   }
+  
+ 
+  res.send(filteredArray);
+  }
+
+
   function show  (req,res){
   // res.send(`post id ${req.params.id}`);
   console.log(`we are showing post id:${req.params.id}`) //debug
@@ -21,6 +29,7 @@
       message:'post not found'
     })
   }
+  res.json(post)
 }
 
 
