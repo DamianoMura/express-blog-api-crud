@@ -6,7 +6,6 @@
   //here we show all posts
   //creating a new array
   let filteredArray=data;
-  
   if (req.query.tags){
     const tag=req.query.tags.toLowerCase();
     console.log(tag)

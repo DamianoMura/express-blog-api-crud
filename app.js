@@ -13,6 +13,8 @@ app.use(express.static('public'));
 app.use(express.static('public/'));
 //enable json decoding for req.body (body parser)
 app.use(express.json());
+//importing the errorsHandler middleware
+const errorsHandler = require("./middlewares/errorsHandler.js");
 //creating the endpoint
 
 app.get('/',(req,res)=>{
@@ -34,7 +36,7 @@ app.get('/',(req,res)=>{
 const postsRoute = require('./routes/postsRouter.js');
 
 app.use('/posts', postsRoute);
-
+app.use(errorsHandler);
 
 app.listen(port,()=>{
   console.log(`blog is  listening on port ${port}`);
