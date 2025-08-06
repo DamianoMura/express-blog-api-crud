@@ -142,7 +142,8 @@ if(post === undefined){
   // console.log(data.indexOf(post))
   data.splice(data.indexOf(post),1)
   res.status(204);
-  console.log(data);
+ res.send("post is been erased correctly")
+  // console.log(data);
 }
 
 module.exports={
