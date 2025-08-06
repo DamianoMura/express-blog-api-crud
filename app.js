@@ -15,6 +15,8 @@ app.use(express.static('public/'));
 app.use(express.json());
 //importing the errorsHandler middleware
 const errorsHandler = require("./middlewares/errorsHandler.js");
+//importing the notFound middleware
+const notFound = require("./middlewares/notFound.js");
 //creating the endpoint
 
 app.get('/',(req,res)=>{
@@ -37,6 +39,7 @@ const postsRoute = require('./routes/postsRouter.js');
 
 app.use('/posts', postsRoute);
 app.use(errorsHandler);
+app.use(notFound);
 
 app.listen(port,()=>{
   console.log(`blog is  listening on port ${port}`);
