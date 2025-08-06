@@ -51,7 +51,7 @@
   //we insert it into the original data array
   data.push(newPost)
   // finally we can send it as a response json
-  res.json(data)
+  res.status(201).json(data)
    
  
 }
