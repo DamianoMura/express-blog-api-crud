@@ -88,7 +88,7 @@
   if(req.body.tags){
     post.tags=req.body.tags
   }
-  res.json(post)
+  res.status(202).json(post)
 }
 
 
@@ -120,7 +120,7 @@
   
   post.tags=req.body.tags
   //we show the new post
-  res.json(post)
+  res.status(202).json(post)
 }
 
 
@@ -141,7 +141,7 @@ if(post === undefined){
 
   // console.log(data.indexOf(post))
   data.splice(data.indexOf(post),1)
-  res.sendStatus(204);
+  res.status(204);
   console.log(data);
 }
 
